@@ -25,7 +25,9 @@ jobs:
           tests: false
 
       - name: Install dependencies
-        run: sudo apt-get install -y texlive-extra-utils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y texlive-extra-utils
 
       - name: Write POD as PDF and jam them together
         run: |
