@@ -2,7 +2,8 @@ name: generate-pdf
 
 on:
   push:
-    branches: [ "master" ]
+    branches: "*"
+    # branches: [ "master" ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -17,16 +18,14 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Setup Perl
-        uses: shogo82148/actions-setup-perl@v1
+        uses: perl-actions/install-with-cpanm@v2
         with:
-          perl-version: "5.28"
-          # install-modules-with: cpanm # installs your cpanfile
+          cpanfile: "cpanfile"
+          sudo: false
+          tests: false
 
       - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y texlive-extra-utils
-          cpanm --sudo -v --installdeps --notest --cpanfile cpanfile .
+        run: sudo apt-get install -y texlive-extra-utils
 
       - name: Write POD as PDF and jam them together
         run: |
@@ -39,4 +38,4 @@ jobs:
         with:
           name: PDL-Book
           path: PDL_Book.pdf
-          retention-days: 3
+          retention-days: 5
