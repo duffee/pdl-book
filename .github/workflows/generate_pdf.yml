@@ -3,6 +3,8 @@ name: generate-pdf
 on:
   push:
     branches: "*"
+    paths:
+      - 'PDL/**'
     # branches: [ "master" ]
 
   # Allows you to run this workflow manually from the Actions tab
