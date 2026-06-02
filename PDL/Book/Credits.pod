@@ -90,3 +90,4 @@ Modified to LyX by Chris Marshall for PDL 2.4.3, December 2006.
 
 Converted to POD format by Mike Burns, May 2010.
 
+Make a change so the generate_pdf action will trigger
